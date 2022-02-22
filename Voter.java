@@ -5,13 +5,21 @@ import java.util.Map;
 public class Voter {
     
     public String name;
-    public HashMap<String, Integer> votes;
+    public String[] votes;
 
     public Voter(String name) {
         this.name = name;
     }
 
-    public HashMap<String, Integer> getVotes() {
+    public void setVotes(ArrayList<String> entries) {
+        votes = new String[entries.size()];
+
+        for (int i = 0; i < votes.length; i++) {
+            votes[i] = entries.get(i);
+        }
+    }
+
+    public String[] getVotes() {
         return this.votes;
     }
 
@@ -19,14 +27,11 @@ public class Voter {
         displayVotes();
 
         System.out.println("Please enter the numbers of the two entries you would like to switch, and then press enter.");
-
+        
         
     }
 
     public void displayVotes() {
-        int i = 1;
-        for (Map.Entry<String, Integer> entry : votes.entrySet()) {
-            System.out.println(i + ") " + "\t" + entry.getKey());
-        }
+        
     }
 }

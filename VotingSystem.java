@@ -62,7 +62,7 @@ public class VotingSystem {
         for(Voter voter : voters) {
             int i = 1;
             for(String entry : entries) {
-                voter.votes.put(entry, i);
+                voter.setVotes(entries);
                 i++;
             }
             voter.vote();
