@@ -1,4 +1,3 @@
-import java.util.HashMap;
 import java.util.Scanner;
 
 public class RankVoting {
@@ -12,33 +11,36 @@ public class RankVoting {
 
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Welcome to the Rank Voting system. What would you like to do?");
+        System.out.println("Welcome to the Rank Voting system.");
         
-        displayMainMenu();
+        while (true) {
 
-        while(!scanner.hasNextInt()) {
-            scanner.next();
-            System.out.println("Invalid input, please enter a number.");
-        }
+            System.out.println("\n\n\n\n\n\n\n\n\n\nWhat would you like to do?");
+            displayMainMenu();
 
-        //read int
-        int choice = Integer.parseInt(scanner.next());
-        scanner.nextLine();
+            while(!scanner.hasNextInt()) {
+                scanner.next();
+                System.out.println("Invalid input, please enter a number.");
+            }
 
-        switch (choice) {
-            case 1:
-                system.enterEntries();
-                break;
-            case 2:
-                system.registerVoters();
-                break;
-            case 3:
-                system.beginVote();
-                break;
-            case 4:
-                system.viewResults();
-                break;
+            //read int
+            int choice = Integer.parseInt(scanner.next());
+            scanner.nextLine();
 
+            switch (choice) {
+                case 1:
+                    system.enterEntries();
+                    break;
+                case 2:
+                    system.registerVoters();
+                    break;
+                case 3:
+                    system.beginVote();
+                    break;
+                case 4:
+                    system.viewResults();
+                    break;
+            }
         }
     }
 
