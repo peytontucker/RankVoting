@@ -1,1 +1,1 @@
-# RankVoting
+# A program designed to allow several users to vote on a list of entries to determine which the most popular entries between users
