@@ -15,7 +15,7 @@ public class RankVoting {
         
         while (true) {
 
-            System.out.println("\n\n\n\n\n\n\n\n\n\nWhat would you like to do?");
+            System.out.println("\n\n\n\nWhat would you like to do?");
             displayMainMenu();
 
             while(!scanner.hasNextInt()) {
@@ -40,6 +40,8 @@ public class RankVoting {
                 case 4:
                     system.viewResults();
                     break;
+                default:
+                    System.out.println("Please enter a valid entry.");
             }
         }
     }

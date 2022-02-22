@@ -40,7 +40,6 @@ public class Voter {
             }
 
             if (scanner.hasNext("quit")) {
-                System.out.println("quit detected");
                 return;
             }
 
@@ -54,7 +53,6 @@ public class Voter {
             }
 
             if (scanner.hasNext("quit")) {
-                System.out.println("quit detected");
                 return;
             }
 
