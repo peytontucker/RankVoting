@@ -15,6 +15,7 @@ public class RankVoting {
         
         while (true) {
 
+            clearScreen();
             System.out.println("\n\n\n\nWhat would you like to do?");
             displayMainMenu();
 
@@ -45,6 +46,11 @@ public class RankVoting {
             }
         }
     }
+
+    public static void clearScreen() {  
+        System.out.print("\033[H\033[2J");  
+        System.out.flush();  
+    }  
 
     public void displayMainMenu() {
         System.out.println("1) Enter Voting Entries\n2) Register Voters\n3) Begin Rank Vote\n4) View Voting Results");

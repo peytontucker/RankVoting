@@ -16,49 +16,43 @@ public class VotingSystem {
     }
 
     public void enterEntries() {
-        boolean moreToAdd = true;
-        while (moreToAdd) {
-        
-        System.out.println("Please enter voting entry.");
+
+        while (true) {
+
+        System.out.println("Please enter voting entry. Type \"quit\" when done entering.");
+
+        if (scanner.hasNext("quit")) {
+            scanner.next();
+            return;
+        }
+
         String entry = scanner.nextLine();
 
         entries.add(entry);
 
-        System.out.println("Would you like to add another entry? Y/N");
-
-        String input = scanner.nextLine();
-
-        while (!input.toLowerCase().equals("y") && !input.toLowerCase().equals("n")) {
-            System.out.println("Please respond Y/N.");
-            input = scanner.nextLine();
-        }
-
-        if (input.toLowerCase().equals("y")) moreToAdd = true;
-        if (input.toLowerCase().equals("n")) moreToAdd = false;
         }
     }
 
     public void registerVoters() {
-        boolean moreToAdd = true;
-        while (moreToAdd) {
-        
-        System.out.println("Please enter the voter's name.");
-        String name = scanner.nextLine();
 
-        Voter voter = new Voter(name);
+        while (true) {
+
+        System.out.println("Please enter voter's name. Type \"quit\" when done entering.");
+
+        if (scanner.hasNext("quit")) {
+            scanner.next();
+            return;
+        }
+        
+        String voterName = scanner.nextLine();
+        if (voterName.length() == 0) {
+            scanner.next();
+            continue;
+        }
+        Voter voter = new Voter(voterName);
+
         voters.add(voter);
 
-        System.out.println("Would you like to add another voter? Y/N");
-
-        String input = scanner.nextLine();
-
-        while (!input.toLowerCase().equals("y") && !input.toLowerCase().equals("n")) {
-            System.out.println("Please respond Y/N.");
-            input = scanner.nextLine();
-        }
-
-        if (input.toLowerCase().equals("y")) moreToAdd = true;
-        if (input.toLowerCase().equals("n")) moreToAdd = false;
         }
     }
 
