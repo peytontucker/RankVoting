@@ -17,49 +17,50 @@ public class VotingSystem {
 
     public void enterEntries() {
 
+        RankVoting.clearScreen();
+        System.out.println("Please enter voting entries. Type \"quit\" when done entering.\n");
+
         while (true) {
+            if (scanner.hasNext("quit")) {
+                scanner.nextLine();
+                return;
+            }
 
-        System.out.println("Please enter voting entry. Type \"quit\" when done entering.");
-
-        if (scanner.hasNext("quit")) {
-            scanner.next();
-            return;
-        }
-
-        String entry = scanner.nextLine();
-
-        entries.add(entry);
-
+            String entry = scanner.nextLine();
+            if (entry.length() == 0) {
+                scanner.next();
+                continue;
+            }
+            
+            entries.add(entry);
         }
     }
 
     public void registerVoters() {
 
+        RankVoting.clearScreen();
+        System.out.println("Please enter voter names. Type \"quit\" when done entering.\n");
+
         while (true) {
+            if (scanner.hasNext("quit")) {
+                scanner.nextLine();
+                return;
+            }
+            
+            String voterName = scanner.nextLine();
+            if (voterName.length() == 0) {
+                scanner.next();
+                continue;
+            }
 
-        System.out.println("Please enter voter's name. Type \"quit\" when done entering.");
-
-        if (scanner.hasNext("quit")) {
-            scanner.next();
-            return;
-        }
-        
-        String voterName = scanner.nextLine();
-        if (voterName.length() == 0) {
-            scanner.next();
-            continue;
-        }
-        Voter voter = new Voter(voterName);
-
-        voters.add(voter);
-
+            Voter voter = new Voter(voterName);
+            voters.add(voter);
         }
     }
 
     public void beginVote() {
         for(Voter voter : voters) {
             voter.setVotes(entries);
-            System.out.println("\n\n\n\n\n\n\n\n" + voter.name + ", it's your turn to vote!");
             voter.vote();
         }
     }
@@ -104,7 +105,7 @@ public class VotingSystem {
 
         //print each index in the (now sorted) orderedKeys array and cross-reference with results hashmap to print total votes cast for each entry
         for (int j = 0; j < orderedKeys.length; j++) {
-            System.out.println(orderedKeys[j] + ": " + results.get(orderedKeys[j]) + " votes");
+            System.out.println(orderedKeys[j] + ": " + results.get(orderedKeys[j]) + " points");
         }
         System.exit(0);
     }

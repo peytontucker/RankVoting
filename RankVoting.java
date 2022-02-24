@@ -1,6 +1,7 @@
 import java.util.Scanner;
 
 public class RankVoting {
+
     public static void main(String[] args) {
         RankVoting session = new RankVoting();
         session.run();
@@ -16,11 +17,11 @@ public class RankVoting {
         while (true) {
 
             clearScreen();
-            System.out.println("\n\n\n\nWhat would you like to do?");
+            System.out.println("What would you like to do?");
             displayMainMenu();
 
             while(!scanner.hasNextInt()) {
-                scanner.next();
+                scanner.nextLine();
                 System.out.println("Invalid input, please enter a number.");
             }
 
@@ -40,6 +41,7 @@ public class RankVoting {
                     break;
                 case 4:
                     system.viewResults();
+                    scanner.close();
                     break;
                 default:
                     System.out.println("Please enter a valid entry.");
@@ -53,6 +55,6 @@ public class RankVoting {
     }  
 
     public void displayMainMenu() {
-        System.out.println("1) Enter Voting Entries\n2) Register Voters\n3) Begin Rank Vote\n4) View Voting Results");
+        System.out.println("1) Enter Voting Entries\n2) Register Voters\n3) Begin Rank Vote\n4) View Voting Results\n");
     }
 }

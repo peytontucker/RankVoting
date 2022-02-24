@@ -5,9 +5,11 @@ public class Voter {
     
     public String name;
     public String[] votes;
+    public Scanner scanner;
 
     public Voter(String name) {
         this.name = name;
+        this.scanner = new Scanner(System.in);
     }
 
     public void setVotes(ArrayList<String> entries) {
@@ -23,42 +25,26 @@ public class Voter {
     }
 
     public void vote() {
-        Scanner scanner = new Scanner(System.in);
-
+        RankVoting.clearScreen();
         displayVotes();
-
+        System.out.println(this.name + ", it's your turn to vote!");
         System.out.println("Please enter the numbers of the two entries you would like to switch. Type \"quit\" when you're finished sorting.\n");
         
 
         while (true) {
-
             System.out.println("First number:");
 
-            while (!scanner.hasNext("quit") && !scanner.hasNextInt()) {
-                scanner.next();
-                System.out.println("Please enter a valid option.");
-            }
-
-            if (scanner.hasNext("quit")) {
-                return;
-            }
-
-            int firstIndexToSwitch = Integer.parseInt(scanner.next())-1;
+            int firstIndexToSwitch = getValidIndex();
+            if (firstIndexToSwitch == -1) return;
 
             System.out.println("Second number:");
 
-            while (!scanner.hasNext("quit") && !scanner.hasNextInt()) {
-                scanner.next();
-                System.out.println("Please enter a valid option.");
-            }
-
-            if (scanner.hasNext("quit")) {
-                return;
-            }
-
-            int secondIndexToSwitch = Integer.parseInt(scanner.next()) - 1;
+            int secondIndexToSwitch = getValidIndex();
+            if (secondIndexToSwitch == -1) return;
             
             switchEntries(firstIndexToSwitch, secondIndexToSwitch);
+            
+            RankVoting.clearScreen();
             displayVotes();
         }
 
@@ -68,11 +54,28 @@ public class Voter {
         for (int i = 0; i < votes.length; i++) {
             System.out.println(i+1 + ") " + votes[i]);
         }
+        System.out.println();
     }
 
     public void switchEntries(int first, int second) {
         String temp = votes[first];
         votes[first] = votes[second];
         votes[second] = temp;
+    }
+
+    public int getValidIndex() {
+        int input = 0;
+
+        while(scanner.hasNext()) {
+            if (scanner.hasNext("quit")) return -1;
+            if (scanner.hasNextInt()) {
+                input = Integer.parseInt(scanner.next())-1;
+                if ((input < votes.length) && input > -1) break;
+            }
+
+            System.out.println("Invalid input, please enter a number.");
+            scanner.nextLine();
+        }
+        return input;
     }
 }
