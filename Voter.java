@@ -32,12 +32,12 @@ public class Voter {
         
 
         while (true) {
-            System.out.println("First number:");
+            System.out.print("First number:\t");
 
             int firstIndexToSwitch = getValidIndex();
             if (firstIndexToSwitch == -1) return;
 
-            System.out.println("Second number:");
+            System.out.print("Second number:\t");
 
             int secondIndexToSwitch = getValidIndex();
             if (secondIndexToSwitch == -1) return;
@@ -73,8 +73,8 @@ public class Voter {
                 if ((input < votes.length) && input > -1) break;
             }
 
-            System.out.println("Invalid input, please enter a number.");
-            scanner.nextLine();
+            System.out.print("Invalid input, please enter a valid number:\t");
+            scanner.next();
         }
         return input;
     }
